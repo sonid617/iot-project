@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Door Control Panel</title>
+</head>
+<body>
+    <h1>🔐 Face Recognition Doorbell</h1>
+
+    <!-- Live Video Feed -->
+    <img src="{{ url_for('video') }}" width="640" height="480" alt="Live Feed">
+
+    <br><br>
+
+    <!-- Buttons -->
+    <button onclick="ringDoorbell()">🔔 Ring Doorbell</button>
+    <button onclick="speakToPerson()">🗣️ Speak</button>
+    <button onclick="openDoor()">🚪 Open Door</button>
+    <button onclick="takePicture()">📸 Take Picture</button>
+
+    <p id="status"></p>
+
+    <script>
+        function ringDoorbell() {
+            fetch('/doorbell', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('status').innerText = data.message;
+                });
+        }
+
+        function speakToPerson() {
+            fetch('/speak', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('status').innerText = data.message;
+                });
+        }
+
+        function openDoor() {
+            fetch('/open-door', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('status').innerText = data.message;
+                });
+        }
+
+        function takePicture() {
+            fetch('/take-picture', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('status').innerText = data.message;
+                });
+        }
+    </script>
+</body>
+</html>
