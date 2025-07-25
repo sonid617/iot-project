@@ -125,4 +125,4 @@ def gen_frames():
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
 if __name__ == '__main__':
-    app.run(host='100.72.4.118', port=5000, debug=True)
+    app.run(host=<'your_ip'>, port=5000, debug=True)
